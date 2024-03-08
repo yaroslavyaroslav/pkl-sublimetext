@@ -20,6 +20,221 @@
   <key>patterns</key>
   <array>
     <dict>
+      <key>match</key>
+      <string>(?x:
+  \b
+  (module)
+  \s+
+  (
+    [\p{L}_$][\p{L}0-9_$]*(?:\.[\p{L}_$][\p{L}0-9_$]*)*
+  )
+)</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.language.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.module.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>(?x:
+  (typealias)
+  \s+
+  ([\p{L}_$][\p{L}0-9_$]*)
+  \s*(=)\s*
+  ((?x:
+  (?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+)
+  \s*
+  (\|\s*(?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+))*
+))
+)</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.class.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.pkl</string>
+        </dict>
+        <key>3</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.pkl</string>
+        </dict>
+        <key>4</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>entity.name.type.pkl</string>
+      <key>match</key>
+      <string>\b(class)\s+[\p{L}_$][\p{L}0-9_$]*</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.class.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>(?x:
+  \b(for)
+  \s*\(
+  ([\p{L}_$][\p{L}0-9_$]*)(?:\s*,\s*([\p{L}_$][\p{L}0-9_$]*))* # bindings
+  \s+
+  (in)
+)</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.control.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.property.pkl</string>
+        </dict>
+        <key>3</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.property.pkl</string>
+        </dict>
+        <key>4</key>
+        <dict>
+          <key>name</key>
+          <string>storage.modifier.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\b(new)\s+((?x:
+  (?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+)
+  \s*
+  (\|\s*(?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+))*
+))</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.control.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\b(function)\s+([\p{L}_$][\p{L}0-9_$]*)</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.property.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\b(as)\s+((?x:
+  (?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+)
+  \s*
+  (\|\s*(?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+))*
+))</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
       <key>name</key>
       <string>constant.character.language.pkl</string>
       <key>match</key>
@@ -38,6 +253,134 @@
       <string>/\*</string>
       <key>end</key>
       <string>\*/</string>
+    </dict>
+    <dict>
+      <key>begin</key>
+      <string>(?x:
+  (
+    (?:\b|\s*)[\p{L}_$][\p{L}0-9_$]* # variable name
+    |
+    `[^`]+` # quoted variable name
+  )
+  \s*
+  (:)
+  \s*
+  ((?x:
+  (?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+)
+  \s*
+  (\|\s*(?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+))*
+)) # type
+)</string>
+      <key>end</key>
+      <string>\s*=|,|\)|^[ \t]*$</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.property.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.pkl</string>
+        </dict>
+        <key>3</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>(?x:
+  (
+    \b[\p{L}_$][\p{L}0-9_$]* # variable name
+    |
+    `[^`]+` # quoted variable name
+  )
+  \s*
+  (=)(?!=)
+)</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.property.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>(:)\s*((?x:
+  (?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+)
+  \s*
+  (\|\s*(?x:
+  [\p{L}_$][\p{L}0-9_$]* # ident
+  \s*
+  (?:&lt;[^&gt;]*&gt;)? # optional type parameters
+  \s*
+  (?:\([^)]*\))? # optional constraint (this is an approximation)
+  \s*
+  \?? # optional nulability indicator
+))*
+))</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.pkl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.pkl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>^\s*([\p{L}_$][\p{L}0-9_$]*)\s*\{</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.other.property.pkl</string>
+        </dict>
+      </dict>
     </dict>
     <dict>
       <key>name</key>
@@ -59,17 +402,41 @@
     </dict>
     <dict>
       <key>name</key>
-      <string>constant.numeric.pkl</string>
+      <string>constant.numeric.hex.pkl</string>
       <key>match</key>
-      <string>(?x:               # extended mode
+      <string>(?x:
   \b
-  (?:
-    0x[\da-fA-F]+  # 1 or more hex literal
-    |
-    0b[0-1]+       # 1 or more binary literal
-    |
-    \d+            # 1 or more decimal literal
-  )
+  0x(?:[\da-fA-F][\da-fA-F_]*[\da-fA-F]|[\da-fA-F_])
+  \b
+)</string>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>constant.numeric.binary.pkl</string>
+      <key>match</key>
+      <string>(?x:
+  \b
+  0b(?:[0-1][0-1_]*[0-1]|[0-1])
+  \b
+)</string>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>constant.numeric.octal.pkl</string>
+      <key>match</key>
+      <string>(?x:
+  \b
+  0o(?:[0-7][0-7_]*[0-7]|[0-7])
+  \b
+)</string>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>constant.numeric.decimal.pkl</string>
+      <key>match</key>
+      <string>(?x:
+  \b
+  (?:\d[0-9_]*\d|\d)
   \b
 )</string>
     </dict>
@@ -80,13 +447,13 @@
       <string>(?x:
   \b
   (?:
-    \d*                 # 0 or more digits
-    \.                  # dot literal
-    \d+                 # 1 or mor digits
-    (?:[eE][+-]?\d+)?   # optional exponent
-    |                   # OR
-    \d+                 # 1 or more digits
-    [eE][+-]?\d+        # exponent
+    (?:\d[0-9_]*\d|\d)?              # 0 or more digits
+    \.                               # dot literal
+    (?:\d[0-9_]*\d|\d)               # 1 or more digits
+    (?:[eE][+-]?(?:\d[0-9_]*\d|\d))? # optional exponent
+    |                                # OR
+    (?:\d[0-9_]*\d|\d)               # 1 or more digits
+    [eE][+-]?(?:\d[0-9_]*\d|\d)      # exponent
   )
   \b
 )</string>
@@ -183,6 +550,12 @@
   |
   :     # colon
 )</string>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>entity.name.type.pkl</string>
+      <key>match</key>
+      <string>@[\p{L}_$][\p{L}0-9_$]*</string>
     </dict>
     <dict>
       <key>name</key>
